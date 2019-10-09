@@ -1,0 +1,39 @@
+select * from destinos inner join destino_tipo on destino_tipo.id = destinos.id 
+inner join tipologias on tipologias.id = destino_tipo.tipologia_id
+where  destino_tipo.destino_id = 1
+
+CREATE TABLE destinos (
+id INT,
+nombre VARCHAR(30),
+PRIMARY KEY (id)	
+);
+
+CREATE TABLE tipologias (
+id INT,
+nombre VARCHAR(30),
+PRIMARY KEY (id)	
+);
+
+CREATE TABLE destino_tipo (
+id INT,
+PRIMARY KEY (id),	
+FOREIGN KEY (destino_id) REFERENCES destinos(id),	
+FOREIGN KEY (tipologia_id) REFERENCES tipologias(id)
+);
+
+CREATE TABLE caracteristicas (
+id INT,
+nombre VARCHAR(30)
+descripcion VARCHAR(45),
+PRIMARY KEY (id)
+);
+
+CREATE TABLE usuarios (
+id INT,
+cedula INT,
+nombre VARCHAR(30),
+apellido VARCHAR(30),
+cargo VARCHAR(30),
+PRIMARY KEY (id)
+);
+	
