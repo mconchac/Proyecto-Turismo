@@ -1,0 +1,99 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Servidor: localhost
+-- Tiempo de generación: 10-10-2019 a las 01:30:46
+-- Versión del servidor: 5.5.24-log
+-- Versión de PHP: 5.4.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `proyecto turismo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `caracteristicas`
+--
+
+CREATE TABLE IF NOT EXISTS `caracteristicas` (
+  `id` int(4) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='caracteristricas de las tipologias';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `destinos`
+--
+
+CREATE TABLE IF NOT EXISTS `destinos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Destinos turisticos';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `destino_tipo`
+--
+
+CREATE TABLE IF NOT EXISTS `destino_tipo` (
+  `id` int(11) NOT NULL,
+  `destino_id` int(11) NOT NULL,
+  `tipologia_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `destino_id` (`destino_id`,`tipologia_id`),
+  KEY `destino_id_2` (`destino_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `responsables`
+--
+
+CREATE TABLE IF NOT EXISTS `responsables` (
+  `id` int(3) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='responsables de los destinos turísticos';
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipologias`
+--
+
+CREATE TABLE IF NOT EXISTS `tipologias` (
+  `id` int(3) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tipos de destinos';
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `destino_tipo`
+--
+ALTER TABLE `destino_tipo`
+  ADD CONSTRAINT `destino_tipo_ibfk_2` FOREIGN KEY (`destino_id`) REFERENCES `destinos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `destino_tipo_ibfk_1` FOREIGN KEY (`id`) REFERENCES `destinos` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
