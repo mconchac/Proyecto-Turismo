@@ -29,3 +29,21 @@ print(test1())
 
 tupla1 = ("python", "django")
 print(tupla1[1])
+
+print(int(5.2))
+print(len("estoy en curso de stack"))
+
+print(type(5))
+print(sum([5,7,3]))
+
+print(sorted([10,50,25]))
+
+producto = ("carne")
+precio = (100)
+
+if (producto == "papas"):
+    if (precio >= 50):
+        precio = (precio - (precio*10/100))
+        print(producto, "a $", int (precio))
+elif (producto == "carne"):
+     print("por hoy", producto, "gratis")
