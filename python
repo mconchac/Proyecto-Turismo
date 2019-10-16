@@ -47,3 +47,11 @@ if (producto == "papas"):
         print(producto, "a $", int (precio))
 elif (producto == "carne"):
      print("por hoy", producto, "gratis")
+
+for i in range(4):
+    print(i)
+
+x = 0
+while x < 10:
+    print (x)
+    x +=1
